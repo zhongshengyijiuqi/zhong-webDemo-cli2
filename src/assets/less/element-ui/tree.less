@@ -1,0 +1,27 @@
+//树节点的内容样式
+.el-tree-node__label {  
+    color: rgba(48, 49, 51, 1);
+}
+
+//树节点默认样式
+.el-tree-node__content {
+    height: 40px;
+    &:hover {
+        background-color: rgba(248, 250, 251, 1);
+        color: #0067ff;
+    }
+    //树节点的箭头样式
+    .el-tree-node__expand-icon {
+        margin-left: 10px;
+    }
+}
+
+//树节点高亮样式
+.el-tree--highlight-current .el-tree-node.is-current > .el-tree-node__content {    
+    background-color: rgba(248, 250, 251, 1);
+}
+
+ //树节点被点击后的样式，再点击树以外的位置 该效果会消失
+.el-tree-node:focus > .el-tree-node__content { 
+    background-color: #ffffff;
+}

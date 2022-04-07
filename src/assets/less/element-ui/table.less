@@ -1,0 +1,34 @@
+.el-table {
+  height: 100%;
+  width: 100%; 
+  position: absolute;
+  tr {
+    height: 40px;
+    th {
+      .cell {
+        font-weight: 400;
+        color: #606266;
+      }
+    }
+  }
+  .el-table__body-wrapper {
+    height: calc(100% - 40px);
+    overflow-y: auto;
+  }
+  td {
+    .cell {
+      padding: 10px;
+    }
+  }
+  .el-table__cell {
+    padding: 0;
+  }
+  .el-button + .el-button {
+    margin-left: 0;
+  }
+  .el-button--text {
+    color:#036ED5;
+    padding: 0 5px;
+  }
+  
+}
