@@ -1,12 +1,7 @@
 <template>
   <div class="help">
     <yy-markdown-directory :el="el"></yy-markdown-directory>
-    <VueShowdown
-      ref="markdown-body"
-      class="markdown-body"
-      :markdown="markdownValue"
-      tag="div"
-    />
+    <VueShowdown ref="markdown-body" class="markdown-body" :markdown="markdownValue" tag="div" />
   </div>
 </template>
 
@@ -66,15 +61,17 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .help {
   height: 100%;
   text-align: left;
   display: flex;
+
   /deep/.markdown-body {
     flex: 1;
     overflow: auto;
     padding: 0 0 0 80px;
+
     pre {
       background: #282c34;
     }

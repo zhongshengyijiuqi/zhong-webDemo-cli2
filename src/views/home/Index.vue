@@ -20,7 +20,6 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
-.home {
-}
+<style lang="scss" scoped>
+.home {}
 </style>

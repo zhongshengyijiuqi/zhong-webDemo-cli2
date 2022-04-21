@@ -18,7 +18,7 @@ import utils from '@/utils'
 import config from '@/config'
 import yiyunComponents from 'library_component'
 Vue.use(yiyunComponents)
-import '@/assets/less/main.less'
+import '@/assets/scss/main.scss'
 
 Vue.config.productionTip = false
 

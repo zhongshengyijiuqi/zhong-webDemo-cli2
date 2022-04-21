@@ -1,0 +1,16 @@
+/* 改变主题色变量 */
+$--color-primary: rgb(3, 110, 213);
+
+/* 改变 icon 字体路径变量，必需 */
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+@import "~element-ui/packages/theme-chalk/src/index";
+@import "./button.scss";
+@import "./tree.scss";
+@import "./table.scss";
+@import "./dialog.scss";
+@import "./messageBox.scss";
+@import "./pagination.scss";
+@import "./radio.scss";
+@import "./image.scss";
+@import "./loading.scss";

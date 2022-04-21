@@ -1,6 +1,3 @@
-* {
-  box-sizing: border-box;
-}
 html, body, header, section, footer, div, ul, ol, li, img, a, span, em, del, legend, strong, var, fieldset, form, label, dl, dt, dd, cite, select, option, input, hr, time, mark, code, figcaption, figure, textarea, h1, h2, h3, h4, h5, h6, p, button, pre {
   font-size: 14px;
   font-family:"SourceHanSansSC-Regular,SourceHanSansSC";
@@ -8,7 +5,7 @@ html, body, header, section, footer, div, ul, ol, li, img, a, span, em, del, leg
   padding: 0;
   list-style: none;
   border: none;
-  scroll-behavior:smooth;
+  scroll-behavior:smooth
 }
 input, textarea {
   border: 1px solid #dcdfe6;
@@ -20,7 +17,9 @@ html, body {
   -ms-text-size-adjust: 100%;
   height: 100%;
   width: 100%;
-  color: #303133;
+}
+* {
+  box-sizing: border-box;
 }
 nav, article, aside, details, main, header, footer, section, fieldset, figcaption, figure {
   display: block;

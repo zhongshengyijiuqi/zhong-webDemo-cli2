@@ -20,7 +20,6 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
-.set {
-}
+<style lang="scss" scoped>
+.set {}
 </style>

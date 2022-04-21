@@ -34,7 +34,7 @@ export default {
       type: Number,
       default: -50
     },
-    pullDownRefresh:{
+    pullDownRefresh: {
       type: Number,
       default: -50
     },
@@ -151,10 +151,10 @@ export default {
       this.scroll && this.scroll.scrollToElement.apply(this.scroll, arguments)
     },
     finishPullUp() {
-      this.scroll &&  this.scroll.finishPullUp()
+      this.scroll && this.scroll.finishPullUp()
     },
     finishPullDown() {
-      this.scroll &&  this.scroll.finishPullDown()
+      this.scroll && this.scroll.finishPullDown()
     },
     resizeScrollDetetion() {
       setTimeout(() => {
@@ -184,5 +184,5 @@ export default {
   },
 }
 </script>
-<style scoped lang='less'>
+<style scoped lang='scss'>
 </style>

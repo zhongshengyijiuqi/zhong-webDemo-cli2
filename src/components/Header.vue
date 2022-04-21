@@ -2,29 +2,19 @@
   <div class="header">
     <div class="header-wrap">
       <div class="header-wrap-left">
-        <img
-          class="logo"
-          :src="`https://dl-yiyunsite.effio.cn/${userInfo.sitePostcode}/logo2.png`"
-        />
+        <img class="logo" :src="`https://dl-yiyunsite.effio.cn/${userInfo.sitePostcode}/logo2.png`" />
         <!-- <img src="@/assets/images/common/logo.png" class="logo" /> -->
-        <p
-          :class="[
-            'projectName',
-            { active: $route.path !== '/help' && $route.path !== '/log' },
-          ]"
-          @click="goHome"
-        >
+        <p :class="[
+          'projectName',
+          { active: $route.path !== '/help' && $route.path !== '/log' },
+        ]" @click="goHome">
           {{ userInfo.appName }}
         </p>
       </div>
       <div class="header-wrap-right">
         <div class="notification">
           <i class="el-icon-bell"></i>
-          <yy-notification
-            :width="376"
-            :height="50"
-            :informations="informations"
-          >
+          <yy-notification :width="376" :height="50" :informations="informations">
           </yy-notification>
         </div>
         <div class="helpEntry">
@@ -55,60 +45,33 @@
           </el-dropdown>
         </div>
         <div class="user">
-          <img
-            class="user-icon"
-            :src="$utils.imgOnNull(`${userInfo.mbIcon}`, 1)"
-            alt="1"
-          />
+          <img class="user-icon" :src="$utils.imgOnNull(`${userInfo.mbIcon}`, 1)" alt="1" />
           <p class="user-name">
             {{ userInfo.mbName ? userInfo.mbName : "暂无用户信息" }}
           </p>
         </div>
       </div>
     </div>
-    <el-dialog
-      custom-class="feedback"
-      title="意见反馈"
-      :close-on-click-modal="false"
-      @close="dialogVisible = false"
-      :visible="dialogVisible"
-      width="700px"
-    >
+    <el-dialog custom-class="feedback" title="意见反馈" :close-on-click-modal="false" @close="dialogVisible = false"
+      :visible="dialogVisible" width="700px">
       <div class="feedbackBox">
         <div class="feedback-item">
           <div class="label required">意见填写</div>
-          <el-input
-            type="textarea"
-            resize="none"
-            show-word-limit
-            :autosize="{ minRows: 5, maxRows: 10 }"
-            placeholder="请输入内容，限200字"
-            maxlength="200"
-            v-model="opinion"
-          >
+          <el-input type="textarea" resize="none" show-word-limit :autosize="{ minRows: 5, maxRows: 10 }"
+            placeholder="请输入内容，限200字" maxlength="200" v-model="opinion">
           </el-input>
         </div>
         <div class="feedback-item">
           <div class="label">上传图片</div>
-          <el-upload
-            class="avatar-uploader"
-            action="https://jsonplaceholder.typicode.com/posts/"
-            :show-file-list="false"
-            accept="image/*"
-            :on-change="upload"
-            :auto-upload="false"
-          >
+          <el-upload class="avatar-uploader" action="https://jsonplaceholder.typicode.com/posts/"
+            :show-file-list="false" accept="image/*" :on-change="upload" :auto-upload="false">
             <img class="picture" :src="picture" alt="" v-if="picture" />
             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
           </el-upload>
         </div>
         <div class="feedback-item feedback-item-last">
           <div class="label required">联系方式</div>
-          <el-input
-            @input="limitTelephone"
-            v-model.trim="telephone"
-            placeholder="请输入"
-          ></el-input>
+          <el-input @input="limitTelephone" v-model.trim="telephone" placeholder="请输入"></el-input>
         </div>
       </div>
       <span slot="footer" class="dialog-footer">
@@ -205,7 +168,7 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="scss">
 .dropdown-item {
   display: flex;
   align-items: center;
@@ -216,7 +179,7 @@ export default {
   }
 }
 </style>
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .header {
   width: 100%;
   height: 62px;
@@ -237,9 +200,11 @@ export default {
       display: flex;
       align-items: center;
       height: 100%;
+
       .logo {
         width: 75px;
       }
+
       .projectName {
         color: #909399;
         height: 100%;

@@ -6,14 +6,9 @@
         <div v-for="log in logList" :key="log.year">
           <div class="year">{{ `${log.year}年` }}</div>
           <el-timeline>
-            <el-timeline-item
-              v-for="timeline in log.logs"
-              :key="timeline.createTime"
-              :timestamp="
-                $moment(timeline.createTime * 1000).format('MM月DD日')
-              "
-              placement="top"
-            >
+            <el-timeline-item v-for="timeline in log.logs" :key="timeline.createTime" :timestamp="
+              $moment(timeline.createTime * 1000).format('MM月DD日')
+            " placement="top">
               <el-card>
                 <pre>{{ timeline.updateRemarks }}</pre>
               </el-card>
@@ -70,7 +65,7 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .log {
   height: 100%;
   padding: 20px 0 0 0;
