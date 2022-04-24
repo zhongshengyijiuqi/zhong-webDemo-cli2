@@ -1,8 +1,8 @@
 {
   "name": "device",
   "version": "1.0.0",
-  "description": "设备管理",
-  "author": "gyj",
+  "description": "PC模板",
+  "author": "yiyun",
   "private": true,
   "scripts": {
     "dev": "vue-cli-service serve",
@@ -10,8 +10,8 @@
     "analyze": "vue-cli-service build --mode analyze",
     "build-test": "vue-cli-service build --mode test",
     "build-ptest": "vue-cli-service build --mode ptest",
-    "build-staging": "vue-cli-service build --mode staging",
-    "build": "vue-cli-service build --mode production"
+    "build-staging": "vue-cli-service build --mode staging && sh build.sh",
+    "build": "vue-cli-service build --mode production && sh build.sh"
   },
   "dependencies": {
     "@microsoft/signalr": "^6.0.0",
@@ -45,6 +45,7 @@
     "@vue/cli-plugin-babel": "^3.8.0",
     "@vue/cli-plugin-eslint": "^3.8.0",
     "@vue/cli-service": "^3.8.0",
+    "archiver": "^5.3.1",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",

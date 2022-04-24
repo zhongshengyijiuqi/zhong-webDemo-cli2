@@ -2,10 +2,8 @@ const path = require("path")
 const glob = require("glob-all")
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin
 const PurgecssPlugin = require("purgecss-webpack-plugin")
-
 const resolve = dir => path.join(__dirname, dir)
-const IS_PROD = ["production", "prod"].includes(process.env.NODE_ENV)
-
+const IS_PROD = ["production"].includes(process.env.NODE_ENV)
 module.exports = {
   publicPath: "./",
   outputDir: "dist",
@@ -50,15 +48,13 @@ module.exports = {
       maxEntrypointSize: 512000,
       maxAssetSize: 512000
     }
-
     if (IS_PROD) {
       const plugins = []
-
       plugins.push(
         new PurgecssPlugin({
           paths: glob.sync([
             path.join(__dirname, "./src/**/*.vue"),
-            path.join(__dirname, "./src/**/*.less")
+            path.join(__dirname, "./src/**/*.scss")
           ])
         })
       )
