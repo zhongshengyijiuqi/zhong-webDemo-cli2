@@ -82,7 +82,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters, mapActions, mapMutations } from "vuex";
 export default {
   name: "SHeader",
   data() {
@@ -92,6 +92,7 @@ export default {
       telephone: "",
       dialogVisible: false,
       informations: [],
+      routeNum: 1,
     };
   },
   computed: {
@@ -105,6 +106,7 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(["sideBarPathList"]),
     ...mapActions(["GetMarquees", "uploadOss", "AddFeedback"]),
     async getInformations() {
       try {
@@ -115,7 +117,8 @@ export default {
       }
     },
     goHome() {
-      this.$router.push("/home");
+      this.sideBarPathList((this.routeNum++) + '/home-dome1')
+      this.$router.push("/home-dome1");
     },
     chooseItem(item) {
       if (item === "feedback") {
@@ -202,7 +205,8 @@ export default {
       height: 100%;
 
       .logo {
-        width: 75px;
+        max-width: 500px;
+        max-height: 34px;
       }
 
       .projectName {
@@ -210,7 +214,7 @@ export default {
         height: 100%;
         line-height: 62px;
         padding: 0 38px;
-        margin-left: 35px;
+        margin-left: 30px;
         cursor: pointer;
       }
 

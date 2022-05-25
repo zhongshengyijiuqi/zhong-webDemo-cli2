@@ -38,17 +38,14 @@ window.addEventListener("unhandledrejection", function (e) {
   console.error('unhandledrejection：', e)
   return true
 });
-window.document.addEventListener("error", (e) => {
-  const tagName = e.target.tagName.toLowerCase()
-  if (tagName !== "img") {
-    return
-  }
-  const attrAlt = e.target.alt
-  if (attrAlt) {
-    //代表头像
-    e.target.src = "https://dl-yiyunappclient.effio.cn/resource/common/avatar.png"
-  } else {
-    e.target.src = "https://dl-yiyunappclient.effio.cn/resource/common/loadError.png"
+window.document.addEventListener("error", e => {
+  if (e.target.tagName.toLowerCase() === 'img') {
+    //有avatar代表头像
+    if (e.target.getAttribute('avatar')) {
+      e.target.src = "https://dl-yiyunappclient.effio.cn/resource/common/avatar.png"
+    } else {
+      e.target.src = "https://dl-yiyunappclient.effio.cn/resource/common/loadError.png"
+    }
   }
 }, true)
 Object.assign(Vue.prototype, {

@@ -7,7 +7,7 @@ export default {
   setTokenBar(state, tokenBar) {   //token
     state.tokenBar = tokenBar
   },
-  setOssToken(state, ossToken) {   
+  setOssToken(state, ossToken) {
     state.ossToken = ossToken
   },
   setOssTokenRefreshTime(state, ossTokenRefreshTime) {
@@ -21,6 +21,10 @@ export default {
   },
   setUserRole(state, userRole) {   //用户本人权限
     state.userRole = userRole
+  },
+  sideBarPathList(state, sideBarPath) {   //头点击跳转路径
+    state.sideBarPath = sideBarPath
+    console.log(state, sideBarPath)
   },
 }
 

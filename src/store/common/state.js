@@ -1,11 +1,12 @@
 export default {
-  userInfo:{},
-  tokenBar:'',
+  userInfo: {},
+  tokenBar: '',
   ossToken: null,
   ossTokenRefreshTime: null,
-  sideBarVisible:true,
-  headerVisible:true,
+  sideBarVisible: true,
+  headerVisible: true,
 
-  userRole:{},
+  userRole: {},
+  sideBarPath: '',//头点击跳转路径
 }
 

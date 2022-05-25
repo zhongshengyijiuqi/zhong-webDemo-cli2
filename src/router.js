@@ -13,13 +13,19 @@ const router = new Router({
         {
             path: '*',
             name: 'notFound',
-            redirect: '/home'
+            redirect: '/home-dome1'
         },
         {
-            path: '/home',
-            name: 'home',
+            path: '/home-dome1',
+            name: 'home-dome1',
             component: () => import('@/views/home/Index.vue')
-        }, {
+        },
+        {
+            path: '/home-dome2',
+            name: 'home-dome2',
+            component: () => import('@/views/home/dome2.vue')
+        },
+        {
             path: '/set',
             name: 'set',
             component: () => import('@/views/set/Index.vue')
