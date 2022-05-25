@@ -6,5 +6,6 @@ export default {
   sideBarVisible: state => state.sideBarVisible,
   headerVisible: state => state.headerVisible,
   userRole: state => state.userRole,
+  isZoomList: state => state.isZoom,
   sideBarPathList: state => state.sideBarPath,
 }

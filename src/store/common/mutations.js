@@ -22,9 +22,11 @@ export default {
   setUserRole(state, userRole) {   //用户本人权限
     state.userRole = userRole
   },
+  isZoomList(state, isZoom) {   //侧边栏收起展开
+    state.isZoom = isZoom
+  },
   sideBarPathList(state, sideBarPath) {   //头点击跳转路径
     state.sideBarPath = sideBarPath
-    console.log(state, sideBarPath)
   },
 }
 

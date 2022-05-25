@@ -40,7 +40,9 @@ export default {
   },
   methods: {
     zoomController() {
-      this.isZoom = !this.isZoom;
+      let isZoom = !this.isZoom
+      this.$store.commit("isZoomList", isZoom);
+
     },
     selectHandler(index, indexPath) {
       this.activeMenuItem = index;
@@ -48,9 +50,12 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(["sideBarPathList"])
+    ...mapGetters(["sideBarPathList", "isZoomList"])
   },
   watch: {
+    isZoomList(val) { //展开收起判断
+      this.isZoom = val
+    },
     sideBarPathList(val) {
       let path = val.split('/')
       this.activeMenuItem = '/' + path[1]

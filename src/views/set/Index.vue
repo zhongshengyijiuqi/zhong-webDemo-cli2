@@ -10,12 +10,17 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters([]),
+    ...mapGetters(["isZoomList"])
   },
-  created() {},
+  created() { },
   methods: {
     ...mapMutations([]),
     ...mapActions([]),
+  },
+  watch: {
+    isZoomList(val) {
+      console.log('val', val)
+    },
   },
 };
 </script>
