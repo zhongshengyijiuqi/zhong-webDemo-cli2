@@ -25,8 +25,5 @@ export default {
   isZoomList(state, isZoom) {   //侧边栏收起展开
     state.isZoom = isZoom
   },
-  sideBarPathList(state, sideBarPath) {   //头点击跳转路径
-    state.sideBarPath = sideBarPath
-  },
 }
 

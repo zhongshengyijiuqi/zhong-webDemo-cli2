@@ -12,8 +12,8 @@
         <el-menu-item index="/home-dome1" class="menu-title menu-item-sub">主页1</el-menu-item>
         <el-menu-item index="/home-dome2" class="menu-title menu-item-sub">主页2</el-menu-item>
       </el-submenu>
-      <el-menu-item index="/set">
-        <img v-if="activeMenuItem === '/set'" src="@/assets/images/common/set.png" alt="" class="sideBar-img" />
+      <el-menu-item index="/set" :class="activeMenuItem.includes('set') ? 'is-active' : ''">
+        <img v-if="activeMenuItem.includes('set')" src="@/assets/images/common/set.png" alt="" class="sideBar-img" />
         <img v-else src="@/assets/images/common/set-disabled.png" alt="" class="sideBar-img" />
         <span slot="title" class="menu-title">设置</span>
       </el-menu-item>
@@ -36,7 +36,6 @@ export default {
   },
 
   created() {
-    this.activeMenuItem = this.$route.path
   },
   methods: {
     zoomController() {
@@ -45,20 +44,22 @@ export default {
 
     },
     selectHandler(index, indexPath) {
-      this.activeMenuItem = index;
+      // this.activeMenuItem = index;
       this.$router.push({ path: index, query: {} });
     },
   },
   computed: {
-    ...mapGetters(["sideBarPathList", "isZoomList"])
+    ...mapGetters(["isZoomList"])
   },
   watch: {
     isZoomList(val) { //展开收起判断
       this.isZoom = val
     },
-    sideBarPathList(val) {
-      let path = val.split('/')
-      this.activeMenuItem = '/' + path[1]
+    $route: {
+      handler(v) {
+        this.activeMenuItem = v.path
+      },
+      immediate: true,
     },
   },
 };

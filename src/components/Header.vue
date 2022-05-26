@@ -82,7 +82,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions, mapMutations } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "SHeader",
   data() {
@@ -92,7 +92,6 @@ export default {
       telephone: "",
       dialogVisible: false,
       informations: [],
-      routeNum: 1,
     };
   },
   computed: {
@@ -106,7 +105,6 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(["sideBarPathList"]),
     ...mapActions(["GetMarquees", "uploadOss", "AddFeedback"]),
     async getInformations() {
       try {
@@ -117,7 +115,6 @@ export default {
       }
     },
     goHome() {
-      this.sideBarPathList((this.routeNum++) + '/home-dome1')
       this.$router.push("/home-dome1");
     },
     chooseItem(item) {
