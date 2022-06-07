@@ -16,7 +16,7 @@ import directives from '@/extend/directives'
 import mixins from '@/extend/mixins'
 import utils from '@/utils'
 import config from '@/config'
-import yiyunComponents from 'library_component'
+import yiyunComponents from 'library_component_new'
 Vue.use(yiyunComponents)
 import '@/assets/scss/main.scss'
 
