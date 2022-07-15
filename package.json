@@ -31,8 +31,6 @@
     "qrcode": "^1.4.4",
     "shortid": "^2.2.16",
     "vue": "^2.6.10",
-    "vue-cookie": "^1.1.4",
-    "vue-localstorage": "^0.6.2",
     "vue-meta": "^2.0.3",
     "vue-router": "^3.0.3",
     "vue-showdown": "^2.4.1",

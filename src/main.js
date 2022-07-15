@@ -3,8 +3,6 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import axios from 'axios'
-import VueLocalStorage from 'vue-localstorage'
-import VueCookie from 'vue-cookie'
 import Components from '@/components'
 import moment from 'moment'
 import '@/plugins'
@@ -60,10 +58,7 @@ Object.assign(Vue.prototype, {
 })
 
 Vue.use(Interceptors, axios)
-Vue.use(VueLocalStorage, {
-  name: 'ls'
-})
-Vue.use(VueCookie)
+
 Vue.use(directives)
 Vue.use(mixins)
 Vue.use(filters)

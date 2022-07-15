@@ -192,7 +192,7 @@ export default {
     margin: 0 auto;
     align-items: center;
     justify-content: space-between;
-    padding: 0 38px 0 30px;
+    padding: 0 38px 0 22px;
     position: relative;
     background: #02173d;
 
