@@ -1,4 +1,4 @@
-import {get, post} from '../methods'
+import { get, post } from '../methods'
 import BaseRequest from './BaseRequest.js'
 
 export default class Common extends BaseRequest {
@@ -8,13 +8,18 @@ export default class Common extends BaseRequest {
     return this._requestFormat(opts)
   }
   //OSS授权
-  @get('/Common/User/GetOSSSigned')
-  GetOSSSigned(opts) {
+  @get('/Common/User/GetOssPolicyToken')
+  GetOssPolicyToken(opts) {
+    return this._requestFormat(opts)
+  }
+  //OSS授权临时
+  @get('/Common/User/GetTemOssPolicyToken')
+  GetTemOssPolicyToken(opts) {
     return this._requestFormat(opts)
   }
   //请求二维码
-  @post('/Common/User/GetQRCode')
-  GetQRCode(opts) {
+  @post('/Common/QR/CreateQr')
+  postCreateCrossQR(opts) {
     return this._requestFormat(opts)
   }
   //删OSS文件
@@ -66,5 +71,5 @@ export default class Common extends BaseRequest {
   @post('/Common/User/SaveSearchHistory')
   SaveSearchHistory(opts) {
     return this._requestFormat(opts)
-  }  
+  }
 }

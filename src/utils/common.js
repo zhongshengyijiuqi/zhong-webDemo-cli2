@@ -36,7 +36,7 @@ export function showLoading(loadingArea = null) {
   }
   loading = Loading.service({
     background: 'rgba(255, 255, 255, 0)',
-    target:loadingArea
+    target: loadingArea
   })
 }
 
@@ -52,7 +52,21 @@ export function hideLoading() {
     }, 500)
   })
 }
+export function judgeObj(str) {//判断是否json字符串
+  if (typeof str == 'string') {
+    try {
+      var obj = JSON.parse(str);
+      if (typeof obj == 'object' && obj) {
+        return true;
+      } else {
+        return false;
+      }
 
+    } catch (error) {
+      return false;
+    }
+  }
+}
 const debounce = (() => {
   let timer = null
   return (fn, wait) => {
@@ -68,17 +82,17 @@ const debounce = (() => {
 })()
 
 const throttle = (() => {
-	let timer = null;
-	return (fn, wait) => {
-		if (timer) {
-			return;
-		}
-		fn();
-		timer = setTimeout(() => {
-			clearTimeout(timer)
-			timer = null;
-		}, wait);
-	};
+  let timer = null;
+  return (fn, wait) => {
+    if (timer) {
+      return;
+    }
+    fn();
+    timer = setTimeout(() => {
+      clearTimeout(timer)
+      timer = null;
+    }, wait);
+  };
 })()
 export {
   debounce,

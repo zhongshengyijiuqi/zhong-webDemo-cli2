@@ -1,5 +1,5 @@
 import Drag from '@/utils/Drag.js';
-import { sleep, getUniqueId, awaitTokenBar, showLoading, hideLoading, debounce, throttle } from '@/utils/common.js';
+import { sleep, getUniqueId, awaitTokenBar, showLoading, judgeObj, hideLoading, debounce, throttle } from '@/utils/common.js';
 import { isEmail, isIdCard, isPhoneNum, isUrl } from '@/utils/validate.js';
 import { parseUrlParams, stringifyQueryString, Cookie2Json } from '@/utils/queryString.js';
 import { filterSpecial, filterNumber } from '@/utils/filters.js';
@@ -20,6 +20,7 @@ export default {
   awaitTokenBar,
   showLoading,
   hideLoading,
+  judgeObj,
   debounce,
   throttle,
 

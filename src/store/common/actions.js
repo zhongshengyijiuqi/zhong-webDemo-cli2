@@ -1,10 +1,11 @@
 import axios from 'axios'
 import { commonRequest } from '@/request/api'
+import moment from "moment";
 // 请求二维码
-async function GetQRCode({ rootState }, params) {
+async function postCreateCrossQR({ rootState }, params) {
   return new Promise(async (resolve, reject) => {
     try {
-      let res = await commonRequest.GetQRCode(params)
+      let res = await commonRequest.postCreateCrossQR(params)
       resolve(res)
     } catch (error) {
       reject(error)
@@ -147,13 +148,32 @@ async function setOssToken({ commit }) {
     }
   })
 }
+async function setTempFileSigned({ commit }) {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let res = await commonRequest.GetTemOssPolicyToken()
+      resolve(res)
+      commit('setOssTokenRefreshTime', new Date())
+      commit('setOssToken', res.Data)
+    } catch (error) {
+      reject(error)
+    }
+  })
+}
 const pureAxios = axios.create()
-async function uploadOss({ state, dispatch }, { file }) {
+const ossExpirationTime = 240000
+var fileNum = 0
+async function uploadOss({ state, dispatch }, { file, fileName = fileNum++, type }) {
   return new Promise(async (resolve, reject) => {
     let oss = state.ossToken
-    if (!state.ossToken || !state.ossTokenRefreshTime || new Date().getTime() > state.ossTokenRefreshTime) {
+    if (!state.ossToken || !state.ossTokenRefreshTime || new Date() - state.ossTokenRefreshTime > ossExpirationTime) {
       try {
-        let res = await dispatch('setOssToken')
+        let res
+        if (type) {
+          res = await dispatch('setTempFileSigned')
+        } else {
+          res = await dispatch('setOssToken')
+        }
         oss = res.data
       } catch (error) {
         reject(error)
@@ -180,7 +200,9 @@ async function uploadOss({ state, dispatch }, { file }) {
       let temp = file.name.split('.')
       fileType = temp[temp.length - 1]
     }
-    let filename = Date.now() + '.' + fileType
+
+    let filename = `${fileName + '_'}${moment(Date.now()).format('YYYY-MM-DD_HH:mm:ss')}.${fileType}`
+    // let filename = Date.now() + '.' + fileType
     let data = new FormData()
     data.append("key", oss.dir + "${filename}");
     data.append("callback", oss.callback);
@@ -195,22 +217,24 @@ async function uploadOss({ state, dispatch }, { file }) {
           'Content-Type': 'multipart/form-data'
         }
       });
-      resolve(res.data.msg)
+      resolve(res)
     } catch (error) {
       reject(error)
     }
+    resolve(`${oss.url}${filename}`)
   })
 }
 
 export {
   AuthorizeSDK,
   SubmitLog,
-  GetQRCode,
+  postCreateCrossQR,
   GetAppUserInfo,
   GetDeptList,
   GetMemberInfoByDept,
   DeleteFiles,
   setOssToken,
+  setTempFileSigned,
   uploadOss,
   GetFactoryModelSupervisor,
   UpdatetFactoryModelSupervisor,
