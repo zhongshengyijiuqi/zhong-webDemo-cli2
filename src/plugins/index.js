@@ -1,5 +1,4 @@
 import '@/plugins/element.js'
-import '@/plugins/lodash.js'
 import '@/plugins/echarts.js'
 import '@/plugins/markdown.js'
 import '@/plugins/websocket.js'

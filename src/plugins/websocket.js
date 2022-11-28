@@ -1,3 +1,4 @@
+// 长连接配置
 import Vue from 'vue'
 const signalR = require("@microsoft/signalr");
 // access_token: tokenBar.access_token

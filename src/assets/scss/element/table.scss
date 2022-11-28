@@ -1,49 +1,45 @@
 .el-table {
   height: 100%;
+
   .el-table__body-wrapper {
-    // height: calc(100% - 60px);
     height: calc(100% - 40px);
     overflow-y: auto;
   }
+
   tr {
     height: 40px;
   }
-  .el-button + .el-button {
+
+  .el-button+.el-button {
     margin-left: 0;
   }
+
   .el-button--text {
-    color:#036ED5;
     padding: 0 5px;
-    span {
-      // font-size:12px;
-    }
+    color: #036ED5;
   }
 }
-.el-table .cell {     //table 每个单元格内容超出省略号表示
-  // font-size: 12px;  
-  // overflow: hidden;
-  // text-overflow:ellipsis;
-  // white-space: nowrap;
+
+.el-table .cell {
   padding: 0 20px;
 }
+
 .el-table th>.cell {
   color: #909399;
-  font-weight:400;
+  font-weight: 400;
   padding: 0 20px;
-  // font-size: 14px;
 }
-.el-table td div {    //table-slot 每个div超出省略号表示
-  // font-size: 12px;
-  color:#303133;
+
+.el-table td div {
   width: 100%;
-  // overflow: hidden;
-  // text-overflow:ellipsis;
-  // white-space: nowrap;
+  color: #303133;
 }
+
 .el-table td {
   padding: 0;
   height: 54px;
 }
+
 .el-table th {
   padding: 3px 0;
   background-color: inherit;

@@ -3,12 +3,20 @@
     <div class="log_box">
       <div class="log_box_header">更新日志</div>
       <div class="log_box_main">
-        <div v-for="log in logList" :key="log.year">
+        <div
+          v-for="log in logList"
+          :key="log.year"
+        >
           <div class="year">{{ `${log.year}年` }}</div>
           <el-timeline>
-            <el-timeline-item v-for="timeline in log.logs" :key="timeline.createTime" :timestamp="
+            <el-timeline-item
+              v-for="timeline in log.logs"
+              :key="timeline.createTime"
+              :timestamp="
               $moment(timeline.createTime * 1000).format('MM月DD日')
-            " placement="top">
+            "
+              placement="top"
+            >
               <el-card>
                 <pre>{{ timeline.updateRemarks }}</pre>
               </el-card>
@@ -21,62 +29,61 @@
 </template>
 
 <script>
-import { mapMutations, mapActions } from "vuex";
+import { mapMutations, mapActions } from 'vuex'
 export default {
-  name: "Log",
+  name: 'Log',
   data() {
     return {
-      logList: [],
-    };
+      logList: []
+    }
   },
   beforeRouteEnter(to, from, next) {
     next((vm) => {
-      vm.setSideBarVisible(false);
-      vm.getLogList();
-    });
+      vm.setSideBarVisible(false)
+      vm.getLogList()
+    })
   },
   beforeRouteLeave(to, from, next) {
-    this.setSideBarVisible(true);
-    next();
+    this.setSideBarVisible(true)
+    next()
   },
   methods: {
-    ...mapMutations(["setSideBarVisible"]),
-    ...mapActions(["GetAppUpdateLogs"]),
+    ...mapMutations(['setSideBarVisible']),
+    ...mapActions(['GetAppUpdateLogs']),
     async getLogList() {
       try {
-        this.$utils.showLoading();
+        this.$utils.showLoading()
         let res = await this.GetAppUpdateLogs({
           page: 1,
-          num: 1000,
-        });
-        let years = [...new Set(res.data.map((v) => v.year))];
+          num: 1000
+        })
+        let years = [...new Set(res.data.map((v) => v.year))]
         this.logList = years.map((year) => {
           return {
             year: year,
-            logs: res.data.filter((d) => d.year == year),
-          };
-        });
-        this.$utils.hideLoading();
+            logs: res.data.filter((d) => d.year == year)
+          }
+        })
+        this.$utils.hideLoading()
       } catch (error) {
-        this.$utils.hideLoading();
+        this.$utils.hideLoading()
       }
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
 .log {
-  height: 100%;
-  padding: 20px 0 0 0;
   display: flex;
   justify-content: center;
+  height: 100%;
+  padding: 20px 0 0 0;
 
   .log_box {
-    background-color: #ffffff;
     width: 1200px;
     height: 100%;
-
+    background-color: #ffffff;
     .log_box_header {
       height: 70px;
       padding: 20px 0 0 32px;
@@ -87,29 +94,27 @@ export default {
     }
 
     .log_box_main {
-      padding: 50px 95px 0 170px;
-      height: calc(100% - 70px);
       overflow: auto;
-
+      height: calc(100% - 70px);
+      padding: 50px 95px 0 170px;
       .year {
+        position: relative;
         width: 80px;
         height: 30px;
-        background: #036ed5;
-        border-radius: 4px;
-        color: #ffffff;
         line-height: 30px;
-        text-align: center;
         margin: 0 0 20px -30px;
-        position: relative;
-
+        border-radius: 4px;
+        background: #036ed5;
+        color: #ffffff;
+        text-align: center;
         &::before {
+          content: ' ';
           position: absolute;
-          content: " ";
-          width: 1px;
-          height: 21px;
           top: 30px;
           left: -1px;
           right: 0;
+          width: 1px;
+          height: 21px;
           margin: auto;
           background: #ededed;
         }
@@ -128,11 +133,11 @@ export default {
           background-color: rgba(254, 121, 7, 0.2);
 
           &::before {
-            content: " ";
+            content: ' ';
             width: 9px;
             height: 9px;
-            background: #fe7907;
             border-radius: 50%;
+            background: #fe7907;
           }
         }
 
@@ -150,16 +155,16 @@ export default {
             margin: 0px 0px 0px 15px;
 
             &::before {
-              content: " ";
-              width: 10px;
-              height: 10px;
-              background-color: #ffffff;
+              content: ' ';
               position: absolute;
               top: 12px;
               left: -6px;
-              transform: rotate(45deg);
+              width: 10px;
+              height: 10px;
               border-left: 1px solid #e8ecef;
               border-bottom: 1px solid #e8ecef;
+              background-color: #ffffff;
+              transform: rotate(45deg);
             }
 
             .el-card.is-always-shadow {

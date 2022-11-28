@@ -1,68 +1,115 @@
+<!-- 侧边栏 -->
 <template>
-  <div class="sideBar" :class="{ 'is-zoom': isZoom }">
-    <el-menu :default-active="activeMenuItem" class="el-menu-vertical-demo" :default-openeds="['/home']"
-      @select="selectHandler" :collapse="isZoom">
+  <div
+    class="sideBar"
+    :class="{ 'is-zoom': isZoom }"
+  >
+    <el-menu
+      :default-active="activeMenuItem"
+      class="el-menu-vertical-demo"
+      :default-openeds="['/home']"
+      @select="selectHandler"
+      :collapse="isZoom"
+    >
       <el-submenu index="/home">
         <template slot="title">
-          <img v-if="activeMenuItem.includes('home')" src="@/assets/images/common/home.png" alt=""
-            class="sideBar-img" />
-          <img v-else src="@/assets/images/common/home-disabled.png" alt="" class="sideBar-img" />
+          <img
+            v-if="activeMenuItem.includes('home')"
+            src="@/assets/images/common/home.png"
+            alt=""
+            class="sideBar-img"
+          />
+          <img
+            v-else
+            src="@/assets/images/common/home-disabled.png"
+            alt=""
+            class="sideBar-img"
+          />
           <span class="menu-title">主页</span>
         </template>
-        <el-menu-item index="/home-dome1" class="menu-title menu-item-sub">主页1</el-menu-item>
-        <el-menu-item index="/home-dome2" class="menu-title menu-item-sub">主页2</el-menu-item>
+        <el-menu-item
+          index="/home-dome1"
+          class="menu-title menu-item-sub"
+        >主页1</el-menu-item>
+        <el-menu-item
+          index="/home-dome2"
+          class="menu-title menu-item-sub"
+        >主页2</el-menu-item>
       </el-submenu>
-      <el-menu-item index="/set" :class="activeMenuItem.includes('set') ? 'is-active' : ''">
-        <img v-if="activeMenuItem.includes('set')" src="@/assets/images/common/set.png" alt="" class="sideBar-img" />
-        <img v-else src="@/assets/images/common/set-disabled.png" alt="" class="sideBar-img" />
-        <span slot="title" class="menu-title">设置</span>
+      <el-menu-item
+        index="/set"
+        :class="activeMenuItem.includes('set') ? 'is-active' : ''"
+      >
+        <img
+          v-if="activeMenuItem.includes('set')"
+          src="@/assets/images/common/set.png"
+          alt=""
+          class="sideBar-img"
+        />
+        <img
+          v-else
+          src="@/assets/images/common/set-disabled.png"
+          alt=""
+          class="sideBar-img"
+        />
+        <span
+          slot="title"
+          class="menu-title"
+        >设置</span>
       </el-menu-item>
     </el-menu>
-    <div class="icon-arrow" @click="zoomController">
-      <img src="@/assets/images/common/arrow.png" alt="" :style="isZoom ? 'transform: rotate(180deg);' : ''" />
+    <div
+      class="icon-arrow"
+      @click="zoomController"
+    >
+      <img
+        src="@/assets/images/common/arrow.png"
+        alt=""
+        :style="isZoom ? 'transform: rotate(180deg);' : ''"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex'
 export default {
-  name: "SideBar",
+  name: 'SideBar',
   data() {
     return {
       isZoom: false,
-      activeMenuItem: "",
-    };
+      activeMenuItem: ''
+    }
   },
 
-  created() {
-  },
+  created() {},
   methods: {
     zoomController() {
+      // 收起展开
       let isZoom = !this.isZoom
-      this.$store.commit("isZoomList", isZoom);
-
+      this.$store.commit('isZoomList', isZoom)
     },
     selectHandler(index, indexPath) {
       // this.activeMenuItem = index;
-      this.$router.push({ path: index, query: {} });
-    },
+      this.$router.push({ path: index, query: {} })
+    }
   },
   computed: {
-    ...mapGetters(["isZoomList"])
+    ...mapGetters(['isZoomList'])
   },
   watch: {
-    isZoomList(val) { //展开收起判断
+    isZoomList(val) {
+      //展开收起判断
       this.isZoom = val
     },
     $route: {
       handler(v) {
         this.activeMenuItem = v.path
       },
-      immediate: true,
-    },
-  },
-};
+      immediate: true
+    }
+  }
+}
 </script>
 
 <style scoped lang="scss">
@@ -70,18 +117,17 @@ export default {
   width: 220px;
   min-height: 400px;
 }
-
 .is-zoom {
   width: 64px !important;
 }
 
 .sideBar {
-  height: 100%;
+  position: relative;
   width: 220px;
+  height: 100%;
   flex-shrink: 0;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
-  position: relative;
   transition: all 0.5s;
 
   .sideBar-img {
@@ -97,14 +143,14 @@ export default {
     color: #ffffff;
 
     .menu-title {
-      color: #ffffff;
       padding-left: 14px;
+      color: #ffffff;
     }
   }
 
   .menu-title {
-    color: #606266;
     padding-left: 14px;
+    color: #606266;
   }
 
   .menu-item-sub {
@@ -113,22 +159,22 @@ export default {
 }
 
 .icon-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
+  top: 35%;
+  right: -12px;
   width: 12px;
   height: 40px;
   background: #e0e2e4;
   border-radius: 0 4px 4px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  top: 35%;
-  right: -12px;
   cursor: pointer;
   z-index: 99;
 
   img {
-    transition: all 0.5s;
     width: 10px;
+    transition: all 0.5s;
   }
 }
 

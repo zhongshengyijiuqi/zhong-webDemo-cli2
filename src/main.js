@@ -13,8 +13,9 @@ import filters from '@/extend/filters'
 import directives from '@/extend/directives'
 import mixins from '@/extend/mixins'
 import utils from '@/utils'
-import config from '@/config'
+// import { VueJsonp } from 'vue-jsonp'
 import yiyunComponents from 'library_component_new'
+// Vue.use(VueJsonp)
 Vue.use(yiyunComponents)
 import '@/assets/scss/main.scss'
 
@@ -48,7 +49,6 @@ window.document.addEventListener("error", e => {
 }, true)
 Object.assign(Vue.prototype, {
   $utils: utils,
-  $config: config,
   $moment: moment,
   $_moment: (timestamp) => {
     // timestamp unit: ms

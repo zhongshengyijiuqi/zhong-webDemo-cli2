@@ -1,17 +1,21 @@
 .el-pagination {
-  padding: 14px 20px;
   display: flex;
   align-items: center;
+  padding: 14px 20px;
+
   button {
     padding: 0;
   }
+
   .el-pager li {
     width: 24px;
-    font-weight:400;
+    font-weight: 400;
   }
+
   .el-icon {
     font-size: 16px;
   }
+
   .el-pagination__sizes {
     flex: 1;
   }

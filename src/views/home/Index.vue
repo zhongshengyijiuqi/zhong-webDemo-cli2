@@ -1,28 +1,35 @@
 <template>
-  <div class="home">home</div>
+  <div class="home">
+
+  </div>
 </template>
 
 <script>
-import { mapGetters, mapMutations, mapActions } from "vuex";
-
+import { mapGetters, mapMutations, mapActions } from 'vuex'
 export default {
-  name: "home",
+  name: 'home',
   data() {
-    return {};
+    return {}
   },
   computed: {
-    ...mapGetters([]),
+    ...mapGetters([])
   },
-  created() {
-
-  },
+  created() {},
   methods: {
     ...mapMutations([]),
-    ...mapActions([]),
-  },
-};
+    ...mapActions([])
+  }
+}
 </script>
 
 <style lang="scss" scoped>
-.home {}
+.home {
+  div {
+    width: 200px;
+    height: 60px;
+    line-height: 60px;
+    border: 1px solid #eeeeee;
+    text-align: center;
+  }
+}
 </style>
