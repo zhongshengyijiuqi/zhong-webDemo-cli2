@@ -13,9 +13,7 @@ import filters from '@/extend/filters'
 import directives from '@/extend/directives'
 import mixins from '@/extend/mixins'
 import utils from '@/utils'
-// import { VueJsonp } from 'vue-jsonp'
 import yiyunComponents from 'library_component_new'
-// Vue.use(VueJsonp)
 Vue.use(yiyunComponents)
 import '@/assets/scss/main.scss'
 

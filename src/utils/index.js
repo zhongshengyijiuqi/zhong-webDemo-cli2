@@ -7,10 +7,11 @@ import { parseExcel, exportExcel_aoa, exportExcel_json } from '@/utils/excel.js'
 import { calcContinueTime } from '@/utils/time.js';
 import { echartsHandler } from '@/utils/chart.js';
 import { getFileType, imgError, imgOnNull } from '@/utils/file.js';
-import { cloneDeep } from '@/utils/cloneDeep.js';
+
 import {
   tree, treeToList, removeRepeatByKey, sortAddressBook, formatInvalidString, formatInvalidNumber
 } from '@/utils/dataStructure.js';
+import { cloneDeep } from '@/utils/cloneDeep.js';
 export default {
   //drag
   Drag,
