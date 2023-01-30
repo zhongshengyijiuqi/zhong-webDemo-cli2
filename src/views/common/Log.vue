@@ -4,20 +4,21 @@
       <div class="log_box_header">更新日志</div>
       <div class="log_box_main">
         <div
-          v-for="log in logList"
-          :key="log.year"
+          v-for="(log,index) in logList"
+          :key="'log_box_main' + index"
         >
           <div class="year">{{ `${log.year}年` }}</div>
           <el-timeline>
             <el-timeline-item
-              v-for="timeline in log.logs"
-              :key="timeline.createTime"
+              v-for="(timeline,logIndex) in log.logs"
+              :key="'timeline' + logIndex"
               :timestamp="
               $moment(timeline.createTime * 1000).format('MM月DD日')
             "
               placement="top"
             >
               <el-card>
+                <div class="versions">{{timeline.versions }}</div>
                 <pre>{{ timeline.updateRemarks }}</pre>
               </el-card>
             </el-timeline-item>
@@ -97,6 +98,15 @@ export default {
       overflow: auto;
       height: calc(100% - 70px);
       padding: 50px 95px 0 170px;
+      .versions {
+        font-weight: 600;
+        font-size: 18px;
+      }
+      pre {
+        word-wrap: break-word;
+        word-break: break-all;
+        white-space: pre-line;
+      }
       .year {
         position: relative;
         width: 80px;

@@ -20,7 +20,10 @@
         </p>
       </div>
       <div class="header-wrap-right">
-        <div class="notification">
+        <div
+          class="notification"
+          v-if="informations.length != 0"
+        >
           <i class="el-icon-bell"></i>
           <yy-notification
             :width="376"
@@ -160,7 +163,8 @@ export default {
       picture: '',
       telephone: '',
       dialogVisible: false,
-      informations: []
+      informations: [],
+      infoHelp: ''
     }
   },
   computed: {
@@ -169,6 +173,7 @@ export default {
   async mounted() {
     try {
       await this.getInformations()
+      await this.GetHelpCenterFun()
     } catch (error) {
       this.$message.error(error)
     }
@@ -183,6 +188,14 @@ export default {
         this.telephone = this.userInfo.phone
         this.opinion = ''
         this.picture = ''
+      } else if (item == 'help') {
+        if (this.infoHelp) {
+          window.open(this.infoHelp)
+        } else {
+          this.$alert(`<div>帮助文档正在生成中，如当前需要查询，请前往<br/><span style="color:#0244a3">【亦云APP】</span>移动端联系<span style="color:#0244a3">【小亦客服】</span>。</div>`, '提示', {
+            dangerouslyUseHTMLString: true
+          })
+        }
       } else {
         this.$router.push(`/${item}`)
       }
@@ -224,11 +237,21 @@ export default {
         this.$utils.hideLoading()
       }
     },
-    ...mapActions(['GetMarquees', 'uploadOss', 'AddFeedback']),
+    ...mapActions(['GetMarquees', 'uploadOss', 'AddFeedback', 'GetHelpCenter']),
     async getInformations() {
       try {
         let res = await this.GetMarquees()
         this.informations = res.data
+      } catch (error) {
+        this.$message.error(error)
+      }
+    },
+    async GetHelpCenterFun() {
+      try {
+        let res = await this.GetHelpCenter({
+          appType: this.$route.query.appType
+        })
+        this.infoHelp = res.data
       } catch (error) {
         this.$message.error(error)
       }

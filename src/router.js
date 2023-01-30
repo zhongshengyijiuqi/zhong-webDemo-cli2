@@ -25,12 +25,7 @@ const router = new Router({
             path: '/set',
             name: 'set',
             component: () => import('@/views/set/Index.vue')
-        },
-        {
-            path: '/help',
-            name: 'help',
-            component: () => import('@/views/common/Help.vue')
-        }, {
+        },{
             path: '/log',
             name: 'log',
             component: () => import('@/views/common/Log.vue')
